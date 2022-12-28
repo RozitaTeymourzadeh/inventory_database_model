@@ -11,5 +11,9 @@
 
 # Prerequisite 
 
-- install docker compose 
+- install docker compose : 
+    Docker Desktop Installer.exe
+https://docs.docker.com/desktop/install/windows-install/
+
+Wsl_update_x64.msi
 
