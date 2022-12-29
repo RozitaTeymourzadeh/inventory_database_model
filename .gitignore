@@ -1,2 +1,4 @@
 
-backend/docker-data/db-data
+backend/docker-data/db-data/
+backend/node_modules/.bin/
+backend/node_modules/*
