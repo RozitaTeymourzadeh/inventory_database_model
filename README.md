@@ -32,4 +32,7 @@ To install knex
  - npx eslint --init
  # create db/migrations folder
  - npx knex migrate:make initial
+ # put in package.json script with the following as a option too : npx knex migrate:latest
+ - npm run migrate 
+ 
 
