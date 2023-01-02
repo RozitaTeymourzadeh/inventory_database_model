@@ -67,6 +67,33 @@ exports.up = async (knex) => {
         url(table, 'website_url');
         references(table, 'address');
     });
+
+    await knex.schema.createTable(tableNames.item,(table) => {
+        table.increments().notNullable();
+        table.string('name').notNullable;
+        table.string('description', 1000);
+        table.string('quantity').notNullable();
+        table.string('sku', 254);
+        references(table, 'user');
+        references(table, 'manufacturer');
+        references(table, 'item_type');
+    });
+
+    await knex.schema.createTable(tableNames.item_info,(table) => {
+        table.increments().notNullable();
+        table.datetime('purchase_date');
+        table.float('unit_price');
+        table.boolean('accessories');
+        references(table, 'item');
+    });
+
+    await knex.schema.createTable(tableNames.item_image,(table) => {
+        table.increments().notNullable();
+        url(table, 'image_url');
+        references(table, 'item');
+    });
+
+
 };
 
 /**
@@ -75,6 +102,9 @@ exports.up = async (knex) => {
  */
 exports.down = async (knex) => {
     await Promise.all([
+        tableNames.item_image,
+        tableNames.item_info,
+        tableNames.item,
         tableNames.manufacturer,
         tableNames.address,
         tableNames.user,
