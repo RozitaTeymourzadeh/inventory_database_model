@@ -1,5 +1,6 @@
 module.exports = {
     user: 'user',
     item_type: 'item_type',
-    manufacturer:  'address',
+    address:  'address',
+    manufacturer: 'manufacturer',
 };
