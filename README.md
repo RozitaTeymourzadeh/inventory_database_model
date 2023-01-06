@@ -1,13 +1,28 @@
 # inventory_database_model
 
+An application for inventory managament system. 
+This application uses the following tools:
+- PostGres as a database
+- Node.js as aSQL query builder (`knex`)
+- Docker build a model at scale
+
+## Installation
+
+* Install dependencies: `npm install`
+* Create `env` with credentials
+* Run the postgres db / adminer: `docker-compose up`
+* Migrate the database: `npm run migrate`
+* Adminer will be running at http://localhost:8080
 
 # Entities
 
+* [x] user
 * [x] item
-* [x] item_info
-* [x] manufacturer
 * [x] item_type
 * [x] address
+* [x] manufacturer
+* [x] item_info
+* [x] item_image
 
 # Prerequisite 
 
@@ -17,22 +32,30 @@ https://docs.docker.com/desktop/install/windows-install/
 
 Wsl_update_x64.msi
 
-# command in powershell
+## command in powershell
  - docker-compose up
+ - docker ps
+ - docker-compose down 
 
-To install knex
+## To install knex
  - npm init -y 
  - npm i knex
  - optional:  npm install -g npm@9.2.0
  - npm i pg
  - npm i dotenv
  - npx knex init
- # set the knexfile.js
+ * set the knexfile.js
  - npm i -D eslint
  - npx eslint --init
- # create db/migrations folder
+ * create db/migrations folder
  - npx knex migrate:make initial
- # put in package.json script with the following as a option too : npx knex migrate:latest
+ * put in package.json script with the following as a option too : npx knex migrate:latest
  - npm run migrate 
+ * set seeds:
+ - npx knex seed:make initial
+ - npm i bcrypt
+ - node -e "console.log(require('crypto').randomBytes(30).toString('hex'))"
+ - npm run seed
+
  
 
