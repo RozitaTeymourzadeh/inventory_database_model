@@ -4,7 +4,8 @@ const Knex = require('knex');
 
 const orderedTableNames = require('../../src/constants/orderedTableNames');
 const tableNames = require('../../src/constants/tableNames');
-//const orderedTableNames = require('../src/constants/orderedTableNames');
+const { item_type } = require('../../src/constants/tableNames');
+const itemType = require('../../src/constants/itemType');
 
 /**
  * 
@@ -33,4 +34,7 @@ exports.seed = async (knex) => {
   console.log('User created:', {
     password,
   }, createdUser);
+
+  await knex(tableNames.item_type)
+    .insert(itemType);
 };
