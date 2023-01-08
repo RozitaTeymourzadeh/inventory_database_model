@@ -56,6 +56,7 @@ Wsl_update_x64.msi
  - npm i bcrypt
  - node -e "console.log(require('crypto').randomBytes(30).toString('hex'))"
  - npm run seed
+ - npx knex migrate:make item_table
 
  
 
