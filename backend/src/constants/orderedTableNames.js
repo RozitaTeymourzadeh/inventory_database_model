@@ -6,6 +6,7 @@ module.exports = [
     tableNames.item_info,
     tableNames.item_image,
     tableNames.item_type,
+    tableNames.item_location,
     tableNames.address,
     tableNames.user,
 ];

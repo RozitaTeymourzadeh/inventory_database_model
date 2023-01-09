@@ -33,6 +33,14 @@ exports.up = async (knex) => {
             table.string('country', 30);
             addDefaultColumns(table);
         }),
+
+        knex.schema.createTable(tableNames.item_location,(table) => {
+            table.increments().notNullable();
+            table.string('name').notNullable;
+            table.string('description', 1000);
+            addDefaultColumns(table);
+        }),
+
         createNameTable(knex, tableNames.item_type),
     ]);
 
@@ -60,6 +68,7 @@ exports.up = async (knex) => {
         table.datetime('purchase_date');
         table.float('unit_price');
         table.boolean('accessories');
+        references(table, 'item_location');
         references(table, 'item');
     });
 
@@ -68,7 +77,6 @@ exports.up = async (knex) => {
         url(table, 'image_url');
         references(table, 'item');
     });
-
 
 };
 
@@ -85,5 +93,6 @@ exports.down = async (knex) => {
         tableNames.address,
         tableNames.user,
         tableNames.item_type,
+        tableNames.item_location,
     ].map((tableName) => knex.schema.dropTable(tableName)));
 };
