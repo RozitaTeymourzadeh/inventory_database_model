@@ -50,32 +50,37 @@ exports.up = async (knex) => {
         table.string('description', 1000);
         url(table, 'website_url');
         references(table, 'address');
+        addDefaultColumns(table);
     });
 
     await knex.schema.createTable(tableNames.item,(table) => {
         table.increments().notNullable();
-        table.string('name').notNullable;
-        table.string('description', 1000);
+        table.string('name', 254).notNullable;
+        table.text('description');
         table.string('quantity').notNullable();
-        table.string('sku', 254);
+        table.string('sku', 42);
         references(table, 'user');
         references(table, 'manufacturer');
         references(table, 'item_type');
+        addDefaultColumns(table);
     });
 
     await knex.schema.createTable(tableNames.item_info,(table) => {
         table.increments().notNullable();
-        table.datetime('purchase_date');
-        table.float('unit_price');
+        table.datetime('purchase_date').notNullable;
+        table.float('unit_price').notNullable().defaultTo(0);
         table.boolean('accessories');
+        table.string('purchaser')
         references(table, 'item_location');
         references(table, 'item');
+        addDefaultColumns(table);
     });
-
+   
     await knex.schema.createTable(tableNames.item_image,(table) => {
         table.increments().notNullable();
         url(table, 'image_url');
         references(table, 'item');
+        addDefaultColumns(table);
     });
 
 };
@@ -94,5 +99,5 @@ exports.down = async (knex) => {
         tableNames.user,
         tableNames.item_type,
         tableNames.item_location,
-    ].map((tableName) => knex.schema.dropTable(tableName)));
+    ].map((tableName) => knex.schema.dropTableIfExists(tableName)));
 };
