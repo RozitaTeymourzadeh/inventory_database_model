@@ -57,6 +57,13 @@ Wsl_update_x64.msi
  - node -e "console.log(require('crypto').randomBytes(30).toString('hex'))"
  - npm run seed
  - npx knex migrate:make item_table
+ - npm run migrate -- --debug
+ - DROP TABLE "address" CASCADE;
+ * API installation
+ - npm i express morgan compression helmet
+ - npm i -D nodemon
+ - npm i papaparse
+
 
  
 
