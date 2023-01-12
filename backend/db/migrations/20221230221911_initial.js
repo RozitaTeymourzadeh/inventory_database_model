@@ -1,38 +1,14 @@
 
 const Knex = require('knex');
-const tableNames = require('../../src/constants/tableNames')
+const tableNames = require('../../src/constants/tableNames');
+const {
+    addDefaultColumns,
+    createNameTable,
+    url,
+    email,
+    references,
+} = require('../../src/lib/tableUtils');
 
-function addDefaultColumns(table){
-    // table.datetime('created_at').notNullable().default(Knex.fn.now());
-    // table.datetime('updated_at').notNullable().default(Knex.fn.now());
-    table.timestamps(false, true);
-    table.datetime('deleted_at');
-}
-
-function createNameTable(knex, table_name){
-    return knex.schema.createTable(table_name, (table)=>{
-        table.increments().notNullable();
-        table.string('name').notNullable().unique();
-        addDefaultColumns(table);
-    });
-}
-
-function references(table, tableName){
-    table
-    .integer(`${tableName}_id`)
-    .unsigned()
-    .references('id')
-    .inTable(tableName)
-    .onDelete('cascade');
-}
-
-function url(table, columnName){
-    table.string(columnName, 2000);
-}
-
-function email(table, columnName){
-    return table.string(columnName, 254);
-}
 /**
  * Tables
  * @param { import("knex").Knex } knex
@@ -57,6 +33,14 @@ exports.up = async (knex) => {
             table.string('country', 30);
             addDefaultColumns(table);
         }),
+
+        knex.schema.createTable(tableNames.item_location,(table) => {
+            table.increments().notNullable();
+            table.string('name').notNullable;
+            table.string('description', 1000);
+            addDefaultColumns(table);
+        }),
+
         createNameTable(knex, tableNames.item_type),
     ]);
 
@@ -66,34 +50,8 @@ exports.up = async (knex) => {
         table.string('description', 1000);
         url(table, 'website_url');
         references(table, 'address');
+        addDefaultColumns(table);
     });
-
-    await knex.schema.createTable(tableNames.item,(table) => {
-        table.increments().notNullable();
-        table.string('name').notNullable;
-        table.string('description', 1000);
-        table.string('quantity').notNullable();
-        table.string('sku', 254);
-        references(table, 'user');
-        references(table, 'manufacturer');
-        references(table, 'item_type');
-    });
-
-    await knex.schema.createTable(tableNames.item_info,(table) => {
-        table.increments().notNullable();
-        table.datetime('purchase_date');
-        table.float('unit_price');
-        table.boolean('accessories');
-        references(table, 'item');
-    });
-
-    await knex.schema.createTable(tableNames.item_image,(table) => {
-        table.increments().notNullable();
-        url(table, 'image_url');
-        references(table, 'item');
-    });
-
-
 };
 
 /**
@@ -102,12 +60,10 @@ exports.up = async (knex) => {
  */
 exports.down = async (knex) => {
     await Promise.all([
-        tableNames.item_image,
-        tableNames.item_info,
-        tableNames.item,
         tableNames.manufacturer,
         tableNames.address,
         tableNames.user,
         tableNames.item_type,
-    ].map((tableName) => knex.schema.dropTable(tableName)));
+        tableNames.item_location,
+    ].reverse().map((tableName) => knex.schema.dropTableIfExists(tableName)));
 };
