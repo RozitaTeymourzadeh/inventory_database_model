@@ -32,12 +32,12 @@ https://docs.docker.com/desktop/install/windows-install/
 
 Wsl_update_x64.msi
 
-## command in powershell
+## Command in powershell
  - docker-compose up
  - docker ps
  - docker-compose down 
 
-## To install knex
+## To install knex and packages
  - npm init -y 
  - npm i knex
  - optional:  npm install -g npm@9.2.0
@@ -47,7 +47,7 @@ Wsl_update_x64.msi
  * set the knexfile.js
  - npm i -D eslint
  - npx eslint --init
- * create db/migrations folder
+ * create db/migrations folder *
  - npx knex migrate:make initial
  * put in package.json script with the following as a option too : npx knex migrate:latest
  - npm run migrate 
@@ -63,7 +63,9 @@ Wsl_update_x64.msi
  - npm i express morgan compression helmet
  - npm i -D nodemon
  - npm i papaparse
-
+ * Install test framework
+ - npm i -D jest supertest
+ - (optional) npm install jest --global // to overcome DEBUG error
 
  
 
