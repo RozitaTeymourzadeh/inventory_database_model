@@ -5,6 +5,7 @@ const helmet = require('helmet');
 
 const middlewares = require('./middlewares');
 const api = require('./api');
+const project = require('./constants/project')
 
 const app = express();
 
@@ -15,7 +16,7 @@ app.use(express.json()); // body parser req.body
 
 app.get('/', (req, res) => {
     res.json({
-        message: '👣 Azbil Inventory App 👩‍💻👩‍💻',
+        message: project.message,
     });
 });
 

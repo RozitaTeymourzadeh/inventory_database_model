@@ -60,8 +60,8 @@ exports.up = async (knex) => {
  */
 exports.down = async (knex) => {
     await Promise.all([
-        tableNames.manufacturer,
         tableNames.address,
+        tableNames.manufacturer,
         tableNames.user,
         tableNames.item_type,
         tableNames.item_location,

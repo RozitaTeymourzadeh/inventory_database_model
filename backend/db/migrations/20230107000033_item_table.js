@@ -77,6 +77,6 @@ exports.down = async (knex) => {
         tableNames.item_image,
         tableNames.item_info,
         tableNames.item,
-    ].reverse().map((name) => knex.schema.dropTableIfExists(name)));
+    ].map((name) => knex.schema.dropTableIfExists(name)));
 
 };

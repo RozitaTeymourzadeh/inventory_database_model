@@ -8,7 +8,7 @@ describe('GET /api/v1/item_type', () => {
         .get('/api/v1/item_type')
         .expect('Content-Type', /json/)
         .expect(200);
-        expect(response.body).toEqual([]);
+        expect(response.body.length).toBeGreaterThan(0);
 
     
 

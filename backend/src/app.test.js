@@ -3,6 +3,7 @@ const supertest = require('supertest');
 
 //const { describe, it } = require('node:test');
 const app = require('./app');
+const project = require('./constants/project');
 
 describe('GET /', () => {
     it('should respond with a message', async () => {
@@ -10,6 +11,6 @@ describe('GET /', () => {
             .get('/')
             .expect('Content-Type', /json/)
             .expect(200);
-        expect(response.body.message).toEqual('👣 Azbil Inventory App 👩‍💻👩‍💻');        
+        expect(response.body.message).toEqual(project.message);        
     });
 });

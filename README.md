@@ -37,6 +37,16 @@ Wsl_update_x64.msi
  - docker ps
  - docker-compose down 
 
+ * To create db for test 
+ - docker exec -t -i backend-db-1 bash // command to go to the specific docker here is inventory app 
+ - psql -Uadmin inventory_app
+ - CREATE DATABASE inventory_app_test; // (optional): createdb inventory_app_test
+ - exit
+ - docker exec -t -i backend-db-1 bash
+ - dropdb inventory_app_test
+
+
+
 ## To install knex and packages
  - npm init -y 
  - npm i knex
@@ -47,10 +57,13 @@ Wsl_update_x64.msi
  * set the knexfile.js
  - npm i -D eslint
  - npx eslint --init
+ 
  * create db/migrations folder *
  - npx knex migrate:make initial
+ 
  * put in package.json script with the following as a option too : npx knex migrate:latest
  - npm run migrate 
+ 
  * set seeds:
  - npx knex seed:make initial
  - npm i bcrypt
@@ -59,13 +72,21 @@ Wsl_update_x64.msi
  - npx knex migrate:make item_table
  - npm run migrate -- --debug
  - DROP TABLE "address" CASCADE;
+ 
+ * To start front-end server
+ - npm run dev
+
  * API installation
  - npm i express morgan compression helmet
  - npm i -D nodemon
  - npm i papaparse
+ 
  * Install test framework
  - npm i -D jest supertest
  - (optional) npm install jest --global // to overcome DEBUG error
+ - npm test
+ - npx jest --init
+ - npx knex migrate:rollback --env test
 
  
 
