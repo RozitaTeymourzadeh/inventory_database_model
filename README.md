@@ -88,5 +88,15 @@ Wsl_update_x64.msi
  - npx jest --init
  - npx knex migrate:rollback --env test
 
+ * Objection.js
+ - npm i
+ - npm install objection
+ 
+ * Password library
+ - npm i jsonwebtoken
+
+
+ - npm i yup
+
  
 

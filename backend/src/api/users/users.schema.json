@@ -1,0 +1,50 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "title": "User",
+    "description": "The user",
+    "required": [
+        "email",
+        "name",
+        "password"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "id": {
+            "$id": "#/properties/id", 
+            "type": "integer",
+            "title": "The id Schema."
+        },
+        "name": {
+            "$id": "#/properties/name", 
+            "type": "string",
+            "title": "The name Schema.",
+            "examples": [
+                "Rose"
+            ]
+        },
+        "email": {
+            "$id": "#/properties/email", 
+            "type": "string",
+            "title": "The email Schema, must be unique.",
+            "examples": [
+                "rose@gmail.com"
+            ]
+        },
+        "password": {
+            "$id": "#/properties/password", 
+            "type": "string",
+            "title": "The hash password Schema."
+        },
+        "created_at": {
+            "$id": "#/properties/created_at", 
+            "type": "string",
+            "title": "The creation date of the user Schema."
+        },
+        "updated_at": {
+            "$id": "#/properties/updated_at", 
+            "type": "string",
+            "title": "The updated date of the user Schema."
+        }
+    }
+}

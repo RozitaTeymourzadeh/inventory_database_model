@@ -28,6 +28,7 @@ router.get('/:id', async (req, res, next) => {
     // }
 
     try {
+        //TODO: validate ID
         const item_type = await queries.get(parseInt(id, 10)); // base 10
         if (item_type){
             return res.json(item_type);
