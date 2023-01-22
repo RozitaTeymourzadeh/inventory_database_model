@@ -42,7 +42,57 @@ function validPassword(password, username){
     .validate(password)
 };
 
+const errorMessage = {
+    InvalidLogin: 'Invalid login!',
+    emailInUse: 'This email is in use, try different email address.',
+
+
+}
+
 router.post('/signin', async (req, res, next) => {
+    const { 
+        name, 
+        email, 
+        password 
+    } = req.body;
+
+    try {
+        await schema.validate({
+            name: 'DocD',
+            email,
+            password,
+
+        }, {
+            abortEarly: false,
+        });
+        const user = await User.query().where({ email }).first();
+        if (!user) {
+            const error = new Error(errorMessage.InvalidLogin);
+            res.status(401);
+            throw error;
+        }
+        const validPassword = await bcrypt.compare(password, user.password);
+        if(!validPassword){
+            const error = new Error(errorMessage.InvalidLogin);
+            res.status(401);
+            throw error;
+        }
+        const payload = {
+            id: user.id,
+            name: user.name,
+            email,
+        }
+        const token = await jwt.sign(payload);
+        res.json({
+            user: payload,
+            token,
+        });
+
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+
 
 });
 
@@ -66,7 +116,7 @@ router.post('/signup', async (req, res, next) => {
         });
         const existingUser = await User.query().where({ email }).first();
         if (existingUser) {
-            const error = new Error('This email is in use, try different email address.');
+            const error = new Error(errorMessage.emailInUse);
             res.status(403);
             throw error;
         }
