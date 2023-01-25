@@ -96,7 +96,7 @@ Wsl_update_x64.msi
  - npm i jsonwebtoken
 
 
- - npm i yup
+ - npm i yup // for login and password validation
 
  
 
