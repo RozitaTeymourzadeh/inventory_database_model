@@ -29,6 +29,7 @@ exports.up = async (knex) => {
             table.string('street_address_1', 50);
             table.string('street_address_2', 50);
             table.string('zipcode', 15);
+            table.string('city', 30);
             table.string('state',30);
             table.string('country', 30);
             addDefaultColumns(table);

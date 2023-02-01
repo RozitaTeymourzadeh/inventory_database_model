@@ -1,0 +1,52 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "title": "Address",
+    "description": "The address",
+    "required": [
+        "street_address_1",
+        "street_address_2",
+        "zip_code",
+        "city",
+        "state",
+        "country"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "id": {
+            "$id": "#/properties/id", 
+            "type": "integer",
+            "title": "The database id of the address schema."
+        },
+        "street_address_1": {
+            "$id": "#/properties/street_address_1", 
+            "type": "string",
+            "title": "The street address line 1 schema."
+        },
+        "street_address_2": {
+            "$id": "#/properties/street_address_2", 
+            "type": "string",
+            "title": "The street address line 2 schema."
+        },        
+        "zipcode": {
+            "$id": "#/properties/zipcode", 
+            "type": "number",
+            "title": "The zipcode schema."
+        },
+        "city": {
+            "$id": "#/properties/city", 
+            "type": "string",
+            "title": "The city schema."
+        },
+        "state": {
+            "$id": "#/properties/state", 
+            "type": "string",
+            "title": "The state schema."
+        },
+        "country": {
+            "$id": "#/properties/country", 
+            "type": "string",
+            "title": "The country schema."
+        }
+    }
+}

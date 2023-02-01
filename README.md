@@ -12,7 +12,11 @@ This application uses the following tools:
 * Create `env` with credentials
 * Run the postgres db / adminer: `docker-compose up`
 * Migrate the database: `npm run migrate`
+* Add metadata/inital data in the table: `npm run seed`
+* Rollback the tables to the previous migrate: `npm run rollback` 
 * Adminer will be running at http://localhost:8080
+* Front-end will be running at http://localhost:5050
+* Run front-end: `npm run dev`
 
 # Entities
 
@@ -24,6 +28,19 @@ This application uses the following tools:
 * [x] item_info
 * [x] item_image
 
+# Implemented
+
+* CRUD
+    * Create
+    * Read
+    * Update
+    * Delete
+* Address Endpoints
+* Company
+* Items
+* Item_info
+
+
 # Prerequisite 
 
 - install docker compose : 
@@ -31,6 +48,9 @@ This application uses the following tools:
 https://docs.docker.com/desktop/install/windows-install/
 
 Wsl_update_x64.msi
+
+- Knex.js // Query builder library to host node.js
+- Objection.js // allows to generate relation in our tables (ORM) and it uses json schema
 
 ## Command in powershell
  - docker-compose up
@@ -98,5 +118,5 @@ Wsl_update_x64.msi
 
  - npm i yup // for login and password validation
 
- 
+ - 
 
