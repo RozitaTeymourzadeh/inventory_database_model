@@ -118,5 +118,7 @@ Wsl_update_x64.msi
 
  - npm i yup // for login and password validation
 
- - 
+ * To fix vulnerabily issue on dependancy
+ - npx npm-upgrade
+ - npm i
 

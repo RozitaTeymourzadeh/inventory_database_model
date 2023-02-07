@@ -5,10 +5,7 @@
     "description": "The address",
     "required": [
         "street_address_1",
-        "street_address_2",
-        "zip_code",
         "city",
-        "state",
         "country"
     ],
     "additionalProperties": false,
@@ -30,7 +27,7 @@
         },        
         "zipcode": {
             "$id": "#/properties/zipcode", 
-            "type": "number",
+            "type": "string",
             "title": "The zipcode schema."
         },
         "city": {

@@ -32,6 +32,15 @@ exports.up = async (knex) => {
             table.string('city', 30);
             table.string('state',30);
             table.string('country', 30);
+            // to avoid identical address in the db
+            table.unique([
+                'street_address_1',
+                'street_address_2',
+                'city',
+                'zipcode',
+                'state',
+                'country',
+            ]);
             addDefaultColumns(table);
         }),
 
