@@ -21,6 +21,7 @@ function references(table, tableName, notNullable = true, columnName = ''){
         .references('id')
         .inTable(tableName)
         .onDelete('cascade');
+    // allow table notNullable, if false can be null    
     if (notNullable){
         defination.notNullable();
     }

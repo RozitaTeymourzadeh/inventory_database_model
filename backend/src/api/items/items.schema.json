@@ -1,0 +1,56 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "title": "Item",
+    "description": "The item in inventory",
+    "required": [
+
+        "name",
+        "quantity",
+        "item_type_id",
+        "manufacturer_id"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "id": {
+            "$id": "#/properties/id", 
+            "type": "integer",
+            "title": "The database id of the item schema."
+        },
+        "user_id": {
+            "$id": "#/properties/user_id", 
+            "type": "number",
+            "title": "The user_id schema."
+        },
+        "name": {
+            "$id": "#/properties/name", 
+            "type": "string",
+            "title": "The name schema."
+        },        
+        "description": {
+            "$id": "#/properties/description", 
+            "type": "string",
+            "title": "The description schema."
+        },
+        "manufacturer_id": {
+            "$id": "#/properties/manufacturer_id", 
+            "type": "integer",
+            "title": "The manufacturer_id schema."
+        },
+        "quantity": {
+            "$id": "#/properties/quantity", 
+            "type": "string",
+            "title": "Thequantity schema."
+        },
+        "sku": {
+            "$id": "#/properties/sku", 
+            "type": "string",
+            "title": "The sku schema."
+        },
+        "item_type_id": {
+            "$id": "#/properties/item_type_id", 
+            "type": "number",
+            "title": "The item_type_id schema."
+        }
+    }
+}
