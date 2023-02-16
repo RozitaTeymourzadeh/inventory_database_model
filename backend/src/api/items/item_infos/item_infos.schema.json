@@ -1,0 +1,54 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "title": "Item Info",
+    "description": "The item info in inventory",
+    "required": [
+
+        "unit_price",
+        "accessories",
+        "purchaser",
+        "item_id",
+        "item_location_id",
+        "purchase_date"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "id": {
+            "$id": "#/properties/id", 
+            "type": "integer",
+            "title": "The database id of the item_infos schema."
+        },
+        "item_id": {
+            "$id": "#/properties/item_id", 
+            "type": "number",
+            "title": "The item_id of item_infos schema."
+        },
+        "purchase_date": {
+            "$id": "#/properties/purchase_date", 
+            "type": "string",
+            "title": "The purchase_date of item_infos schema."
+        },        
+        "unit_price": {
+            "$id": "#/properties/unit_price", 
+            "minimum": 0,
+            "type": "string",
+            "title": "The unit_price of item_infos schema."
+        },
+        "accessories": {
+            "$id": "#/properties/accessories", 
+            "type": "string",
+            "title": "The accessories of item_infos schema."
+        },
+        "item_location_id": {
+            "$id": "#/properties/item_location_id", 
+            "type": "integer",
+            "title": "The item_location_id og item_infos schema."
+        },
+        "purchaser": {
+            "$id": "#/properties/purchaser", 
+            "type": "string",
+            "title": "The purchaser of item_infos schema."
+        }
+    }
+}

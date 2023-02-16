@@ -40,8 +40,8 @@ exports.up = async (knex) => {
     await knex.schema.createTable(tableNames.item_info,(table) => {
         table.increments().notNullable();
         table.datetime('purchase_date').notNullable;
-        table.float('unit_price').notNullable().defaultTo(0);
-        table.boolean('accessories');
+        table.string('unit_price').notNullable().defaultTo(0);
+        table.string('accessories');
         table.string('purchaser')
         references(table, 'item_location');
         references(table, 'item');

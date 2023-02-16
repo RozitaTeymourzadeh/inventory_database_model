@@ -42,4 +42,16 @@ exports.seed  = async (knex) => {
     await knex(tableNames.item_type).insert({
         name:'Accessories',
     });
+
+    await knex(tableNames.item_location).insert([
+        {
+            name:'ANAD Santa Clara Labratory ',
+        },
+        {
+            name: 'Livermore Darryn`s Garage ',
+        },
+        {
+            name: 'San Jose Rose `s house',
+        }
+    ]);
 };
